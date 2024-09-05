@@ -1,7 +1,7 @@
 # mssv_train.py
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import LabelEncoder
 import pickle
 
@@ -19,8 +19,8 @@ y = data['variety']
 # Chia dữ liệu thành tập train và test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# Huấn luyện mô hình (Random Forest)
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# Huấn luyện mô hình (Naive Bayes)
+model = GaussianNB()
 model.fit(X_train, y_train)
 
 # Lưu mô hình
