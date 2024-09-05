@@ -1,5 +1,4 @@
-
-from flask import Flask,render_template,url_for,request
+from flask import Flask, render_template, request
 import numpy as np
 import pickle
 
@@ -7,6 +6,8 @@ app = Flask(__name__)
 
 with open('app/model/iris_model.pkl', 'rb') as file:
     model = pickle.load(file)
+
+class_names = ['Setosa', 'Versicolor', 'Virginica']
 
 @app.route('/')
 def index():
@@ -21,11 +22,12 @@ def predict():
         
         # Dự đoán
         prediction = model.predict(final_features)
-        
+
         # Kết quả
-        output = prediction[0]
+        predicted_class = class_names[prediction[0]]
         
-        return render_template('index.html', prediction_text=f'Loài hoa dự đoán là: {output}')
+        # Trả về kết quả dự đoán và không lưu kết quả nào trong session hoặc cache
+        return render_template('index.html', prediction_text=f'Loài hoa dự đoán là: {predicted_class}')
 
 if __name__ == '__main__':
-	app.run(debug=True)
+    app.run(debug=True)
