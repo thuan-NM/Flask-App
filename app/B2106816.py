@@ -1,11 +1,9 @@
 
 from flask import Flask,render_template,url_for,request
-from flask_material import Material
 import numpy as np
 import pickle
 
 app = Flask(__name__)
-Material(app)
 
 with open('app/model/iris_model.pkl', 'rb') as file:
     model = pickle.load(file)
