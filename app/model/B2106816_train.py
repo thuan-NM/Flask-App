@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 
 # Đọc dữ liệu từ file iris.csv
-data = pd.read_csv('iris.csv')
+data = pd.read_csv('app/model/iris.csv')
 
 # Tiền xử lý dữ liệu (chuyển đổi nhãn từ chuỗi thành số)
 label_encoder = LabelEncoder()
@@ -24,7 +24,7 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Lưu mô hình
-with open('iris_model.pkl', 'wb') as file:
+with open('app/model/iris_model.pkl', 'wb') as file:
     pickle.dump(model, file)
 
 print("Mô hình đã được huấn luyện và lưu.")

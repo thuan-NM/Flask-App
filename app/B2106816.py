@@ -7,7 +7,7 @@ import pickle
 app = Flask(__name__)
 Material(app)
 
-with open('model/iris_model.pkl', 'rb') as file:
+with open('app/model/iris_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 @app.route('/')
